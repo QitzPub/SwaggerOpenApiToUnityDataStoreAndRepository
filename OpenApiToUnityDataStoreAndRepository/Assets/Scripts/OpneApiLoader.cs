@@ -674,8 +674,10 @@ string FilePath => AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\');
         {
             var proPertyName = modelProperty.Key;
             string proPertyPrivateName = proPertyName.ToLower();
+            var tempName = proPertyName.Replace("_"," ");
             TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
-            string proPertyPublicName = ti.ToTitleCase(proPertyName);
+            string proPertyPublicName = ti.ToTitleCase(tempName);
+            proPertyPublicName = proPertyPublicName.Replace(" ", "");
             if (proPertyPrivateName == proPertyPublicName)
             {
                 proPertyPublicName = "_" + proPertyPublicName;
